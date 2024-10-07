@@ -1,0 +1,398 @@
+[
+  {
+    "title": "Creating Problem-Solving Agents using GenAI for Action Composition",
+    "url": "https://courses.analyticsvidhya.com/courses/CreatingProblem-SolvingAgentsusingGenAIforActionComposition",
+    "is_free": true,
+    "num_lessons": "6 Lessons"
+  },
+  {
+    "title": "Improving Real World RAG Systems: Key Challenges & Practical Solutions",
+    "url": "https://courses.analyticsvidhya.com/courses/improving-real-world-rag-systems-key-challenges",
+    "is_free": true,
+    "num_lessons": "12 Lessons"
+  },
+  {
+    "title": "Framework to Choose the Right LLM for your Business",
+    "url": "https://courses.analyticsvidhya.com/courses/choosing-the-right-LLM-for-your-business",
+    "is_free": true,
+    "num_lessons": "6 Lessons"
+  },
+  {
+    "title": "Building Smarter LLMs with Mamba and State Space Model",
+    "url": "https://courses.analyticsvidhya.com/courses/SSMAndMambaForAI",
+    "is_free": true,
+    "num_lessons": "14 Lessons"
+  },
+  {
+    "title": "Generative AI - A Way of Life - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/genai-a-way-of-life",
+    "is_free": true,
+    "num_lessons": "30 Lessons"
+  },
+  {
+    "title": "Building LLM Applications using Prompt Engineering - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/building-llm-applications-using-prompt-engineering-free",
+    "is_free": true,
+    "num_lessons": "17 Lessons"
+  },
+  {
+    "title": "Building Your First Computer Vision Model - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/building-your-first-computer-vision-model",
+    "is_free": true,
+    "num_lessons": "7 Lessons"
+  },
+  {
+    "title": "Bagging and Boosting ML Algorithms - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/bagging-boosting-ML-Algorithms",
+    "is_free": true,
+    "num_lessons": "16 Lessons"
+  },
+  {
+    "title": "MidJourney: From Inspiration to Implementation - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/midjourney_from_inspiration_to_implementation",
+    "is_free": true,
+    "num_lessons": "5 Lessons"
+  },
+  {
+    "title": "Understanding Linear Regression - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/free-understanding-linear-regression",
+    "is_free": true,
+    "num_lessons": "10 Lessons"
+  },
+  {
+    "title": "The Working of Neural Networks - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/The%20Working%20of%20Neural%20Networks",
+    "is_free": true,
+    "num_lessons": "11 Lessons"
+  },
+  {
+    "title": "The A to Z of Unsupervised ML - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/free-unsupervised-ml-guide",
+    "is_free": true,
+    "num_lessons": "13 Lessons"
+  },
+  {
+    "title": "Building Your first RAG System using LlamaIndex - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/building-first-rag-systems-using-llamaindex",
+    "is_free": true,
+    "num_lessons": "12 Lessons"
+  },
+  {
+    "title": "Data Preprocessing on a Real-World Problem Statement - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/data-preprocessing",
+    "is_free": true,
+    "num_lessons": "13 Lessons"
+  },
+  {
+    "title": "Exploring Stability.AI - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/exploring-stability-ai",
+    "is_free": true,
+    "num_lessons": "7 Lessons"
+  },
+  {
+    "title": "Building a Text Classification Model with Natural Language Processing - Free Course",
+    "url": "https://courses.analyticsvidhya.com/courses/free-building-textclassification-natural-language-processing",
+    "is_free": true,
+    "num_lessons": "16 Lessons"
+  },
+  {
+    "title": "Getting Started with Large Language Models",
+    "url": "https://courses.analyticsvidhya.com/courses/getting-started-with-llms",
+    "is_free": true,
+    "num_lessons": "18 Lessons"
+  },
+  {
+    "title": "Introduction to Generative  AI",
+    "url": "https://courses.analyticsvidhya.com/courses/introduction-to-generative-ai",
+    "is_free": true,
+    "num_lessons": "9 Lessons"
+  },
+  {
+    "title": "Nano Course: Dreambooth-Stable Diffusion for Custom Images",
+    "url": "https://courses.analyticsvidhya.com/courses/nano-course-dreambooth-stable-diffusion-for-custom-images",
+    "is_free": true,
+    "num_lessons": "13 Lessons"
+  },
+  {
+    "title": "A Comprehensive Learning Path for Deep Learning in 2023",
+    "url": "https://courses.analyticsvidhya.com/courses/a-comprehensive-learning-path-for-deep-learning-in-2023",
+    "is_free": true,
+    "num_lessons": "72 Lessons"
+  },
+  {
+    "title": "A Comprehensive Learning Path to Become a Data Scientist in 2024",
+    "url": "https://courses.analyticsvidhya.com/courses/a-comprehensive-learning-path-to-become-a-data-scientist-in-twenty-twenty-four",
+    "is_free": true,
+    "num_lessons": "389 Lessons"
+  },
+  {
+    "title": "Nano Course: Building Large Language Models for Code",
+    "url": "https://courses.analyticsvidhya.com/courses/building-large-language-models-for-code",
+    "is_free": true,
+    "num_lessons": "10 Lessons"
+  },
+  {
+    "title": "Certified AI & ML BlackBelt+ Program",
+    "url": "https://courses.analyticsvidhya.com/bundles/certified-ai-ml-blackbelt-plus",
+    "is_free": false,
+    "num_lessons": "No lesson count found"
+  },
+  {
+    "title": "Machine Learning Summer Training",
+    "url": "https://courses.analyticsvidhya.com/courses/machine-learning-summer-training",
+    "is_free": true,
+    "num_lessons": "263 Lessons"
+  },
+  {
+    "title": "AI Ethics by Fractal",
+    "url": "https://courses.analyticsvidhya.com/courses/ai-ethics-fractal",
+    "is_free": false,
+    "num_lessons": "5 Lessons"
+  },
+  {
+    "title": "A Comprehensive Learning Path to Become a Data Engineer in 2022",
+    "url": "https://courses.analyticsvidhya.com/courses/a-comprehensive-learning-path-to-become-a-data-engineer-in-2022",
+    "is_free": true,
+    "num_lessons": "205 Lessons"
+  },
+  {
+    "title": "Certified Business Analytics Program",
+    "url": "https://courses.analyticsvidhya.com/bundles/certified-business-analytics-program",
+    "is_free": false,
+    "num_lessons": "No lesson count found"
+  },
+  {
+    "title": "Certified Machine Learning Master's Program (MLMP)",
+    "url": "https://courses.analyticsvidhya.com/bundles/certified-machine-learning-master-s-program-mlmp",
+    "is_free": false,
+    "num_lessons": "No lesson count found"
+  },
+  {
+    "title": "Certified Natural Language Processing Master’s Program",
+    "url": "https://courses.analyticsvidhya.com/bundles/certified-natural-language-processing-master-s-program",
+    "is_free": false,
+    "num_lessons": "No lesson count found"
+  },
+  {
+    "title": "Certified Computer Vision Master's Program",
+    "url": "https://courses.analyticsvidhya.com/bundles/certified-computer-vision-masters-program",
+    "is_free": false,
+    "num_lessons": "No lesson count found"
+  },
+  {
+    "title": "Applied Machine Learning - Beginner to Professional",
+    "url": "https://courses.analyticsvidhya.com/courses/applied-machine-learning-beginner-to-professional",
+    "is_free": false,
+    "num_lessons": "613 Lessons"
+  },
+  {
+    "title": "Ace Data Science Interviews",
+    "url": "https://courses.analyticsvidhya.com/courses/ace-data-science-interviews",
+    "is_free": false,
+    "num_lessons": "59 Lessons"
+  },
+  {
+    "title": "Writing Powerful Data Science Articles",
+    "url": "https://courses.analyticsvidhya.com/courses/writing-powerful-data-science-articles",
+    "is_free": true,
+    "num_lessons": "6 Lessons"
+  },
+  {
+    "title": "Machine Learning Certification Course for Beginners",
+    "url": "https://courses.analyticsvidhya.com/courses/Machine-Learning-Certification-Course-for-Beginners",
+    "is_free": true,
+    "num_lessons": "261 Lessons"
+  },
+  {
+    "title": "Data Science Career Conclave",
+    "url": "https://courses.analyticsvidhya.com/courses/data-science-career-conclave",
+    "is_free": true,
+    "num_lessons": "6 Lessons"
+  },
+  {
+    "title": "Top Data Science Projects for Analysts and Data Scientists",
+    "url": "https://courses.analyticsvidhya.com/courses/top-data-science-projects-for-analysts-and-data-scientists",
+    "is_free": true,
+    "num_lessons": "36 Lessons"
+  },
+  {
+    "title": "Getting Started with Git and GitHub for Data Science Professionals",
+    "url": "https://courses.analyticsvidhya.com/courses/getting-started-with-git-and-github-for-data-science-professionals",
+    "is_free": true,
+    "num_lessons": "20 Lessons"
+  },
+  {
+    "title": "Machine Learning Starter Program",
+    "url": "https://courses.analyticsvidhya.com/bundles/machine-learning-starter-program",
+    "is_free": true,
+    "num_lessons": "No lesson count found"
+  },
+  {
+    "title": "Data Science Hacks, Tips and Tricks",
+    "url": "https://courses.analyticsvidhya.com/courses/data-science-hacks-tips-and-tricks",
+    "is_free": true,
+    "num_lessons": "37 Lessons"
+  },
+  {
+    "title": "Introduction to Business Analytics",
+    "url": "https://courses.analyticsvidhya.com/courses/introduction-to-analytics",
+    "is_free": true,
+    "num_lessons": "32 Lessons"
+  },
+  {
+    "title": "Introduction to PyTorch for Deep Learning",
+    "url": "https://courses.analyticsvidhya.com/courses/introduction-to-pytorch-for-deeplearning",
+    "is_free": true,
+    "num_lessons": "28 Lessons"
+  },
+  {
+    "title": "Introductory Data Science for Business Managers",
+    "url": "https://courses.analyticsvidhya.com/bundles/introductory-data-science-for-business-managers",
+    "is_free": false,
+    "num_lessons": "No lesson count found"
+  },
+  {
+    "title": "Introduction to Natural Language Processing",
+    "url": "https://courses.analyticsvidhya.com/courses/Intro-to-NLP",
+    "is_free": true,
+    "num_lessons": "21 Lessons"
+  },
+  {
+    "title": "Getting started with Decision Trees",
+    "url": "https://courses.analyticsvidhya.com/courses/getting-started-with-decision-trees",
+    "is_free": true,
+    "num_lessons": "21 Lessons"
+  },
+  {
+    "title": "Introduction to Python",
+    "url": "https://courses.analyticsvidhya.com/courses/introduction-to-data-science",
+    "is_free": true,
+    "num_lessons": "70 Lessons"
+  },
+  {
+    "title": "Loan Prediction Practice Problem (Using Python)",
+    "url": "https://courses.analyticsvidhya.com/courses/loan-prediction-practice-problem-using-python",
+    "is_free": true,
+    "num_lessons": "16 Lessons"
+  },
+  {
+    "title": "Big Mart Sales Prediction Using R",
+    "url": "https://courses.analyticsvidhya.com/courses/big-mart-sales-prediction-using-r",
+    "is_free": true,
+    "num_lessons": "19 Lessons"
+  },
+  {
+    "title": "Twitter Sentiment Analysis",
+    "url": "https://courses.analyticsvidhya.com/courses/twitter-sentiment-analysis",
+    "is_free": true,
+    "num_lessons": "18 Lessons"
+  },
+  {
+    "title": "Pandas for Data Analysis in Python",
+    "url": "https://courses.analyticsvidhya.com/courses/pandas-for-data-analysis-in-python",
+    "is_free": true,
+    "num_lessons": "27 Lessons"
+  },
+  {
+    "title": "Support Vector Machine (SVM) in Python and R",
+    "url": "https://courses.analyticsvidhya.com/courses/support-vector-machine-svm-in-python-and-r",
+    "is_free": true,
+    "num_lessons": "13 Lessons"
+  },
+  {
+    "title": "Evaluation Metrics for Machine Learning Models",
+    "url": "https://courses.analyticsvidhya.com/courses/evaluation-metrics-for-machine-learning-models",
+    "is_free": true,
+    "num_lessons": "25 Lessons"
+  },
+  {
+    "title": "Fundamentals of Regression Analysis",
+    "url": "https://courses.analyticsvidhya.com/courses/Fundamentals-of-Regression-Analysis",
+    "is_free": true,
+    "num_lessons": "24 Lessons"
+  },
+  {
+    "title": "Getting Started with scikit-learn (sklearn) for Machine Learning",
+    "url": "https://courses.analyticsvidhya.com/courses/get-started-with-scikit-learn-sklearn",
+    "is_free": true,
+    "num_lessons": "27 Lessons"
+  },
+  {
+    "title": "Convolutional Neural Networks (CNN) from Scratch",
+    "url": "https://courses.analyticsvidhya.com/courses/convolutional-neural-networks-cnn-from-scratch",
+    "is_free": true,
+    "num_lessons": "17 Lessons"
+  },
+  {
+    "title": "Dimensionality Reduction for Machine Learning",
+    "url": "https://courses.analyticsvidhya.com/courses/dimensionality-reduction-for-machine-learning",
+    "is_free": true,
+    "num_lessons": "23 Lessons"
+  },
+  {
+    "title": "K-Nearest Neighbors (KNN) Algorithm in Python and R",
+    "url": "https://courses.analyticsvidhya.com/courses/K-Nearest-Neighbors-KNN-Algorithm",
+    "is_free": true,
+    "num_lessons": "10 Lessons"
+  },
+  {
+    "title": "Ensemble Learning and Ensemble Learning Techniques",
+    "url": "https://courses.analyticsvidhya.com/courses/ensemble-learning-and-ensemble-learning-techniques",
+    "is_free": true,
+    "num_lessons": "37 Lessons"
+  },
+  {
+    "title": "Linear Programming for Data Science Professionals",
+    "url": "https://courses.analyticsvidhya.com/courses/linear-programming",
+    "is_free": true,
+    "num_lessons": "20 Lessons"
+  },
+  {
+    "title": "Naive Bayes from Scratch",
+    "url": "https://courses.analyticsvidhya.com/courses/naive-bayes",
+    "is_free": true,
+    "num_lessons": "19 Lessons"
+  },
+  {
+    "title": "Learn Swift for Data Science",
+    "url": "https://courses.analyticsvidhya.com/courses/learn-swift-for-data-science",
+    "is_free": true,
+    "num_lessons": "21 Lessons"
+  },
+  {
+    "title": "Introduction to Web Scraping using Python",
+    "url": "https://courses.analyticsvidhya.com/courses/introduction-to-web-scraping",
+    "is_free": true,
+    "num_lessons": "13 Lessons"
+  },
+  {
+    "title": "Tableau for Beginners",
+    "url": "https://courses.analyticsvidhya.com/courses/tableau-for-beginners",
+    "is_free": true,
+    "num_lessons": "17 Lessons"
+  },
+  {
+    "title": "Getting Started with Neural Networks",
+    "url": "https://courses.analyticsvidhya.com/courses/getting-started-with-neural-networks",
+    "is_free": true,
+    "num_lessons": "46 Lessons"
+  },
+  {
+    "title": "Introduction to AI & ML",
+    "url": "https://courses.analyticsvidhya.com/courses/introduction-to-ai-ml",
+    "is_free": true,
+    "num_lessons": "17 Lessons"
+  },
+  {
+    "title": "Winning Data Science Hackathons - Learn from Elite Data Scientists",
+    "url": "https://courses.analyticsvidhya.com/courses/winning-data-science-hackathons-learn-from-elite-data-scientists",
+    "is_free": true,
+    "num_lessons": "7 Lessons"
+  },
+  {
+    "title": "Hypothesis Testing for Data Science and Analytics",
+    "url": "https://courses.analyticsvidhya.com/courses/hypothesis-testing-for-data-science-and-analytics",
+    "is_free": true,
+    "num_lessons": "19 Lessons"
+  }
+]
