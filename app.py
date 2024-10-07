@@ -10,48 +10,50 @@ def main():
     
     search_tool = load_search_tool()
     
-    st.sidebar.header("Filters")
-    difficulty = st.sidebar.multiselect(
-        "Difficulty",
-        options=["Beginner", "Intermediate", "Advanced"],
-        default=["Beginner", "Intermediate", "Advanced"]
-    )
-    
-    is_free = st.sidebar.checkbox("Show only free courses", value=False)
-    
     query = st.text_input("Enter your search query:")
+    
+    # Add difficulty filter
+    difficulties = ['All'] + list(set(course.get('difficulty', 'Not specified') for course in search_tool.courses))
+    selected_difficulty = st.selectbox("Filter by difficulty:", difficulties)
+    
+    # Add price filter
+    price_filter = st.radio("Filter by price:", ["All", "Free", "Paid"])
     
     if query:
         results = search_tool.search(query)
         
+        # Apply filters
         filtered_results = [
             result for result in results
-            if result['course'].get('difficulty', 'Not specified') in difficulty
-            and (not is_free or result['course'].get('is_free', False))
+            if (selected_difficulty == 'All' or result['course'].get('difficulty') == selected_difficulty) and
+            (price_filter == 'All' or 
+             (price_filter == 'Free' and result['course'].get('is_free', False)) or 
+             (price_filter == 'Paid' and not result['course'].get('is_free', True)))
         ]
-        
-        st.write(f"Found {len(filtered_results)} results")
         
         for result in filtered_results:
             course = result['course']
             st.subheader(course['title'])
             st.write(f"Relevance Score: {result['score']:.4f}")
             st.write(f"Difficulty: {course.get('difficulty', 'Not specified')}")
+            st.write(f"Price: {'Free' if course.get('is_free', False) else 'Paid'}")
+            st.write(f"Number of Lessons: {course.get('num_lessons', 'Not specified')}")
             st.write(f"Estimated Time: {course.get('estimated_time', 'Not specified')}")
             st.write(f"Rating: {course.get('rating', 'Not specified')}")
-            st.write(f"Number of Lessons: {course.get('num_lessons', 'Not specified')}")
-            st.write(f"Free: {'Yes' if course.get('is_free', False) else 'No'}")
             
-            with st.expander("Course Description"):
+            with st.expander("Course Summary"):
+                st.write(search_tool.summarize_course(course))
+            
+            with st.expander("Full Description"):
                 st.write(course.get('full_description', 'No description available'))
             
             with st.expander("Key Takeaways"):
-                takeaways = course.get('key_takeaways', [])
-                if takeaways:
-                    for takeaway in takeaways:
-                        st.write(f"• {takeaway}")
-                else:
-                    st.write("No key takeaways available")
+                for takeaway in course.get('key_takeaways', []):
+                    st.write(f"- {takeaway}")
+            
+            with st.expander("Curriculum"):
+                for lesson in course.get('curriculum', []):
+                    st.write(f"- {lesson}")
             
             st.write(f"[Go to course]({course['url']})")
             st.write("---")
