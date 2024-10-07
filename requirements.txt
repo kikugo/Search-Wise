@@ -1,6 +1,6 @@
-requests
-beautifulsoup4
-sentence-transformers
 streamlit
+sentence-transformers
 torch
 transformers
+beautifulsoup4
+requests
