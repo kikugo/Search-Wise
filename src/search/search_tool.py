@@ -6,25 +6,40 @@ import pickle
 from transformers import pipeline
 from typing import List, Dict, Any
 from functools import partial
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 class SmartSearchTool:
     def __init__(self, data_file: str):
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
         self.courses = self.load_courses(data_file)
+        logging.info(f"Loaded {len(self.courses)} courses")
         self.course_embeddings = self.load_or_compute_embeddings()
+        logging.info(f"Loaded embeddings with shape: {self.course_embeddings.shape}")
 
     def load_courses(self, data_file: str) -> List[Dict[str, Any]]:
-        with open(data_file, 'r', encoding='utf-8') as f:
-            return json.load(f)
+        try:
+            with open(data_file, 'r', encoding='utf-8') as f:
+                courses = json.load(f)
+            logging.info(f"Successfully loaded {len(courses)} courses from {data_file}")
+            return courses
+        except Exception as e:
+            logging.error(f"Error loading courses from {data_file}: {str(e)}")
+            return []
 
     def load_or_compute_embeddings(self) -> torch.Tensor:
         try:
             with open('data/course_embeddings.pkl', 'rb') as f:
-                return pickle.load(f)
+                embeddings = pickle.load(f)
+            logging.info("Successfully loaded pre-computed embeddings")
+            return embeddings
         except FileNotFoundError:
+            logging.info("Computing course embeddings...")
             embeddings = self.compute_course_embeddings()
             with open('data/course_embeddings.pkl', 'wb') as f:
                 pickle.dump(embeddings, f)
+            logging.info("Saved computed embeddings")
             return embeddings
 
     def compute_course_embeddings(self) -> torch.Tensor:
@@ -34,6 +49,10 @@ class SmartSearchTool:
     @staticmethod
     @st.cache_data(ttl=3600)
     def _search(query: str, _course_embeddings: List[List[float]], _courses: List[Dict[str, Any]], top_k: int = 5, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+        logging.info(f"Searching for query: {query}")
+        logging.info(f"Number of courses: {len(_courses)}")
+        logging.info(f"Number of embeddings: {len(_course_embeddings)}")
+        
         model = SentenceTransformer('all-MiniLM-L6-v2')
         query_embedding = model.encode(query, convert_to_tensor=True)
         course_embeddings = torch.tensor(_course_embeddings)
@@ -44,9 +63,9 @@ class SmartSearchTool:
         for score, idx in zip(top_results[0], top_results[1]):
             course = _courses[idx]
             if filters:
-                if 'difficulty' in filters and course.get('difficulty') not in filters['difficulty']:
+                if 'difficulty' in filters and filters['difficulty'] and course.get('difficulty') not in filters['difficulty']:
                     continue
-                if 'is_free' in filters and course.get('is_free') != filters['is_free']:
+                if 'is_free' in filters and filters['is_free'] and not course.get('is_free', False):
                     continue
             results.append({
                 'score': score.item(),
@@ -55,12 +74,14 @@ class SmartSearchTool:
             if len(results) == top_k:
                 break
         
+        logging.info(f"Found {len(results)} results")
         return results
 
     def search(self, query: str, top_k: int = 5, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
-        # Convert torch.Tensor to list for caching
         course_embeddings_list = self.course_embeddings.tolist()
         return self._search(query, course_embeddings_list, self.courses, top_k, filters)
+
+
 
     def summarize_course(self, course: Dict[str, Any], max_length: int = 100) -> str:
         text = f"{course['title']}. {course.get('full_description', '')}"

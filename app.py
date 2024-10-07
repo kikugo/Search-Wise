@@ -1,11 +1,12 @@
 import streamlit as st
 import sys
 import os
+import logging
+from src.search.search_tool import SmartSearchTool
 
-# Add the project root to the Python path
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
-from src.search.search_tool import SmartSearchTool
+logging.basicConfig(level=logging.INFO)
 
 @st.cache_resource
 def load_search_tool():
@@ -16,6 +17,8 @@ def main():
     
     search_tool = load_search_tool()
     
+    st.write(f"Loaded {len(search_tool.courses)} courses")
+    
     if 'page_number' not in st.session_state:
         st.session_state.page_number = 0
 
@@ -23,7 +26,7 @@ def main():
     difficulty = st.sidebar.multiselect(
         "Difficulty",
         options=["Beginner", "Intermediate", "Advanced"],
-        default=["Beginner", "Intermediate", "Advanced"]
+        default=[]
     )
     
     is_free = st.sidebar.checkbox("Show only free courses", value=False)
@@ -38,6 +41,12 @@ def main():
         results = search_tool.search(query, filters=filters)
         
         st.write(f"Found {len(results)} results")
+        
+        if len(results) == 0:
+            st.write("Debug info:")
+            st.write(f"Query: {query}")
+            st.write(f"Filters: {filters}")
+            st.write(f"Number of courses: {len(search_tool.courses)}")
         
         # Pagination
         results_per_page = 5
