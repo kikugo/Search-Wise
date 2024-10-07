@@ -42,17 +42,12 @@ def main():
         
         st.write(f"Found {len(results)} results")
         
-        if len(results) == 0:
-            st.write("Debug info:")
-            st.write(f"Query: {query}")
-            st.write(f"Filters: {filters}")
-            st.write(f"Number of courses: {len(search_tool.courses)}")
-        
         # Pagination
         results_per_page = 5
+        total_pages = (len(results) - 1) // results_per_page + 1
         start = st.session_state.page_number * results_per_page
         end = start + results_per_page
-
+        
         for result in results[start:end]:
             course = result['course']
             st.subheader(course['title'])
@@ -82,11 +77,11 @@ def main():
         if st.session_state.page_number > 0:
             if col1.button('Previous'):
                 st.session_state.page_number -= 1
-        if end < len(results):
+        if st.session_state.page_number < total_pages - 1:
             if col3.button('Next'):
                 st.session_state.page_number += 1
 
-        st.write(f"Page {st.session_state.page_number + 1} of {len(results) // results_per_page + 1}")
+        st.write(f"Page {st.session_state.page_number + 1} of {total_pages}")
 
 if __name__ == "__main__":
     main()

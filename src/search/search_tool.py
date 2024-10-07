@@ -48,7 +48,7 @@ class SmartSearchTool:
 
     @staticmethod
     @st.cache_data(ttl=3600)
-    def _search(query: str, _course_embeddings: List[List[float]], _courses: List[Dict[str, Any]], top_k: int = 5, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+    def _search(query: str, _course_embeddings: List[List[float]], _courses: List[Dict[str, Any]], top_k: int = None, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
         logging.info(f"Searching for query: {query}")
         logging.info(f"Number of courses: {len(_courses)}")
         logging.info(f"Number of embeddings: {len(_course_embeddings)}")
@@ -71,15 +71,13 @@ class SmartSearchTool:
                 'score': score.item(),
                 'course': course
             })
-            if len(results) == top_k:
-                break
         
         logging.info(f"Found {len(results)} results")
         return results
 
-    def search(self, query: str, top_k: int = 5, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+    def search(self, query: str, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
         course_embeddings_list = self.course_embeddings.tolist()
-        return self._search(query, course_embeddings_list, self.courses, top_k, filters)
+        return self._search(query, course_embeddings_list, self.courses, filters=filters)
 
 
 
