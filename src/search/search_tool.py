@@ -12,7 +12,6 @@ class SmartSearchTool:
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
         self.courses = self.load_courses(data_file)
         self.course_embeddings = self.load_or_compute_embeddings()
-        self.summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
     def load_courses(self, data_file: str) -> List[Dict[str, Any]]:
         with open(data_file, 'r', encoding='utf-8') as f:
@@ -29,20 +28,21 @@ class SmartSearchTool:
             return embeddings
 
     def compute_course_embeddings(self) -> torch.Tensor:
-        texts = [f"{course['title']} {course.get('full_description', '')} {' '.join(course.get('key_takeaways', []))} {' '.join(course.get('curriculum', []))} {course.get('difficulty', '')} {course.get('instructor_info', '')}" for course in self.courses]
+        texts = [f"{course['title']} {course.get('full_description', '')} {' '.join(course.get('key_takeaways', []))}" for course in self.courses]
         return self.model.encode(texts, convert_to_tensor=True)
 
     @staticmethod
     @st.cache_data(ttl=3600)
-    def _search(query: str, course_embeddings: torch.Tensor, courses: List[Dict[str, Any]], top_k: int = 5, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+    def _search(query: str, _course_embeddings: List[List[float]], _courses: List[Dict[str, Any]], top_k: int = 5, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
         model = SentenceTransformer('all-MiniLM-L6-v2')
         query_embedding = model.encode(query, convert_to_tensor=True)
+        course_embeddings = torch.tensor(_course_embeddings)
         cos_scores = util.cos_sim(query_embedding, course_embeddings)[0]
-        top_results = torch.topk(cos_scores, k=len(courses))
+        top_results = torch.topk(cos_scores, k=len(_courses))
         
         results = []
         for score, idx in zip(top_results[0], top_results[1]):
-            course = courses[idx]
+            course = _courses[idx]
             if filters:
                 if 'difficulty' in filters and course.get('difficulty') not in filters['difficulty']:
                     continue
@@ -58,7 +58,9 @@ class SmartSearchTool:
         return results
 
     def search(self, query: str, top_k: int = 5, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
-        return self._search(query, self.course_embeddings, self.courses, top_k, filters)
+        # Convert torch.Tensor to list for caching
+        course_embeddings_list = self.course_embeddings.tolist()
+        return self._search(query, course_embeddings_list, self.courses, top_k, filters)
 
     def summarize_course(self, course: Dict[str, Any], max_length: int = 100) -> str:
         text = f"{course['title']}. {course.get('full_description', '')}"
