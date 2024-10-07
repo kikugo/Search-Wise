@@ -39,8 +39,8 @@ This project aims to create a user-friendly search interface for Analytics Vidhy
 
 1. Clone the repository:
    ```
-   git clone [https://github.com/yourusername/analytics-vidhya-course-search.git](https://github.com/kikugo/scraping-proj.git)
-   cd analytics-vidhya-course-search
+   git clone https://github.com/kikugo/scraping-proj.git
+   cd scraping-proj
    ```
 
 2. Create a virtual environment (optional but recommended):
