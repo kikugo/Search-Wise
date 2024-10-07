@@ -42,9 +42,6 @@ def main():
     search_tool = load_search_tool()
     
     st.write(f"Loaded {len(search_tool.courses)} courses")
-    
-    if 'page_number' not in st.session_state:
-        st.session_state.page_number = 0
 
     st.sidebar.header("Filters")
     difficulty = st.sidebar.multiselect(
@@ -64,41 +61,39 @@ def main():
         default=[]
     )
     
-    # Autocomplete
     query = st.text_input("Enter your search query:")
-    if query:
-        suggestions = get_autocomplete_suggestions(search_tool, query)
-        if suggestions:
-            selected_suggestion = st.selectbox("Did you mean:", [""] + suggestions)
-            if selected_suggestion:
-                query = selected_suggestion
 
     if query:
-        filters = {
-            'difficulty': difficulty,
-            'is_free': is_free,
-            'min_rating': min_rating,
-            'max_duration': max_duration,
-            'topics': topics
-        }
-        results = search_tool.search(query, filters=filters)
+        # Perform initial search without filters
+        initial_results = search_tool.search(query)
         
-        st.write(f"Found {len(results)} results")
+        # Apply filters to the initial results
+        filtered_results = [
+            result for result in initial_results
+            if (not difficulty or result['course'].get('difficulty') in difficulty) and
+               (not is_free or result['course'].get('is_free', False)) and
+               (result['course'].get('rating', 0) >= min_rating) and
+               (result['course'].get('estimated_time', 0) <= max_duration) and
+               (not topics or any(topic.lower() in result['course'].get('title', '').lower() for topic in topics))
+        ]
         
-        if results:
-            # Pagination
-            results_per_page = 9  # Increased to fit 3x3 grid
-            total_pages = (len(results) - 1) // results_per_page + 1
-            page = st.selectbox("Page", range(1, total_pages + 1)) - 1
+        st.write(f"Found {len(filtered_results)} results")
+        
+        if filtered_results:
+            results_per_page = 9
+            total_pages = (len(filtered_results) - 1) // results_per_page + 1
+            page = st.selectbox("Page", range(1, total_pages + 1), index=0) - 1
             
             start = page * results_per_page
             end = start + results_per_page
             
-            display_course_grid(results[start:end])
+            display_course_grid(filtered_results[start:end])
 
             st.write(f"Page {page + 1} of {total_pages}")
         else:
             st.write("No results found. Please try a different query or adjust your filters.")
+    else:
+        st.write("Enter a search query to find courses.")
 
 if __name__ == "__main__":
     main()
