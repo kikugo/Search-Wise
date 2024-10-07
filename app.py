@@ -85,32 +85,20 @@ def main():
         
         st.write(f"Found {len(results)} results")
         
-        # Pagination
-        results_per_page = 9  # Increased to fit 3x3 grid
-        total_pages = (len(results) - 1) // results_per_page + 1
-        page = st.selectbox("Page", range(1, total_pages + 1)) - 1
-        
-        start = page * results_per_page
-        end = start + results_per_page
-        
-        display_course_grid(results[start:end])
+        if results:
+            # Pagination
+            results_per_page = 9  # Increased to fit 3x3 grid
+            total_pages = (len(results) - 1) // results_per_page + 1
+            page = st.selectbox("Page", range(1, total_pages + 1)) - 1
+            
+            start = page * results_per_page
+            end = start + results_per_page
+            
+            display_course_grid(results[start:end])
 
-        st.write(f"Page {page + 1} of {total_pages}")
-
-    # Add a section for search analytics
-    st.sidebar.header("Search Analytics")
-    if st.sidebar.button("Show Popular Searches"):
-        # This is a placeholder. In a real application, you'd implement
-        # tracking of searches and display actual popular searches here.
-        st.sidebar.write("Popular searches: Python, Machine Learning, Data Science")
-
-    # Add a section for user feedback
-    st.sidebar.header("Feedback")
-    if st.sidebar.button("Submit Feedback"):
-        feedback = st.sidebar.text_area("Your feedback:")
-        if feedback:
-            # In a real application, you'd save this feedback to a database
-            st.sidebar.success("Thank you for your feedback!")
+            st.write(f"Page {page + 1} of {total_pages}")
+        else:
+            st.write("No results found. Please try a different query or adjust your filters.")
 
 if __name__ == "__main__":
     main()
