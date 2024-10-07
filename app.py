@@ -10,12 +10,29 @@ def main():
     
     search_tool = load_search_tool()
     
+    st.sidebar.header("Filters")
+    difficulty = st.sidebar.multiselect(
+        "Difficulty",
+        options=["Beginner", "Intermediate", "Advanced"],
+        default=["Beginner", "Intermediate", "Advanced"]
+    )
+    
+    is_free = st.sidebar.checkbox("Show only free courses", value=False)
+    
     query = st.text_input("Enter your search query:")
     
     if query:
         results = search_tool.search(query)
         
-        for result in results:
+        filtered_results = [
+            result for result in results
+            if result['course'].get('difficulty', 'Not specified') in difficulty
+            and (not is_free or result['course'].get('is_free', False))
+        ]
+        
+        st.write(f"Found {len(filtered_results)} results")
+        
+        for result in filtered_results:
             course = result['course']
             st.subheader(course['title'])
             st.write(f"Relevance Score: {result['score']:.4f}")
@@ -23,6 +40,7 @@ def main():
             st.write(f"Estimated Time: {course.get('estimated_time', 'Not specified')}")
             st.write(f"Rating: {course.get('rating', 'Not specified')}")
             st.write(f"Number of Lessons: {course.get('num_lessons', 'Not specified')}")
+            st.write(f"Free: {'Yes' if course.get('is_free', False) else 'No'}")
             
             with st.expander("Course Description"):
                 st.write(course.get('full_description', 'No description available'))
