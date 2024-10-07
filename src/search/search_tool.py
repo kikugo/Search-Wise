@@ -5,6 +5,7 @@ import torch
 import pickle
 from transformers import pipeline
 from typing import List, Dict, Any
+from functools import partial
 
 class SmartSearchTool:
     def __init__(self, data_file: str):
@@ -31,15 +32,17 @@ class SmartSearchTool:
         texts = [f"{course['title']} {course.get('full_description', '')} {' '.join(course.get('key_takeaways', []))} {' '.join(course.get('curriculum', []))} {course.get('difficulty', '')} {course.get('instructor_info', '')}" for course in self.courses]
         return self.model.encode(texts, convert_to_tensor=True)
 
-    @st.cache_data(ttl=3600)  # Cache for 1 hour
-    def search(self, query: str, top_k: int = 5, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
-        query_embedding = self.model.encode(query, convert_to_tensor=True)
-        cos_scores = util.cos_sim(query_embedding, self.course_embeddings)[0]
-        top_results = torch.topk(cos_scores, k=len(self.courses))
+    @staticmethod
+    @st.cache_data(ttl=3600)
+    def _search(query: str, course_embeddings: torch.Tensor, courses: List[Dict[str, Any]], top_k: int = 5, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+        model = SentenceTransformer('all-MiniLM-L6-v2')
+        query_embedding = model.encode(query, convert_to_tensor=True)
+        cos_scores = util.cos_sim(query_embedding, course_embeddings)[0]
+        top_results = torch.topk(cos_scores, k=len(courses))
         
         results = []
         for score, idx in zip(top_results[0], top_results[1]):
-            course = self.courses[idx]
+            course = courses[idx]
             if filters:
                 if 'difficulty' in filters and course.get('difficulty') not in filters['difficulty']:
                     continue
@@ -53,6 +56,9 @@ class SmartSearchTool:
                 break
         
         return results
+
+    def search(self, query: str, top_k: int = 5, filters: Dict[str, Any] = None) -> List[Dict[str, Any]]:
+        return self._search(query, self.course_embeddings, self.courses, top_k, filters)
 
     def summarize_course(self, course: Dict[str, Any], max_length: int = 100) -> str:
         text = f"{course['title']}. {course.get('full_description', '')}"
