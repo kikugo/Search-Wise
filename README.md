@@ -1,3 +1,14 @@
+---
+title: Course Search AV
+emoji: 🔍
+colorFrom: blue
+colorTo: green
+sdk: streamlit
+sdk_version: 1.21.0
+app_file: app.py
+pinned: false
+---
+
 # Course Compass
 
 Course Compass is a smart search tool for online courses, featuring web scraping capabilities, a semantic search implementation, and an interactive Streamlit web application.
