@@ -1,6 +1,8 @@
 streamlit
 sentence-transformers
 torch
-transformers
+plotly
+nltk
+scikit-learn
 beautifulsoup4
 requests
