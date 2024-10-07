@@ -89,22 +89,23 @@ class SmartSearchTool:
         return results
 
     @staticmethod
+    def parse_rating(rating_str: str) -> float:
+        try:
+            return float(rating_str.split('/')[0])  # Fixed indentation
+        except (ValueError, AttributeError):
+            return 0.0
+
+    @staticmethod
     def parse_duration(duration_str: str) -> float:
         try:
             if 'Hour' in duration_str:
                 return float(duration_str.split()[0])
             elif 'Mins' in duration_str:
                 return float(duration_str.split()[0]) / 60
-            return 0
-        except ValueError:
-            return 0
-
-    @staticmethod
-    def parse_rating(rating_str: str) -> float:
-        try:
-            return float(rating_str.split('/')[0])
-        except ValueError:
-            return 0
+            else:  # Ensure the final return is reachable
+                return 0.0
+        except (ValueError, AttributeError):
+            return 0.0
 
 if __name__ == "__main__":
     search_tool = SmartSearchTool('data/av_courses_detailed.json')

@@ -72,8 +72,8 @@ def main():
             result for result in initial_results
             if (not difficulty or result['course'].get('difficulty') in difficulty) and
                (not is_free or result['course'].get('is_free', False)) and
-               (result['course'].get('rating', 0) >= min_rating) and
-               (result['course'].get('estimated_time', 0) <= max_duration) and
+               (search_tool.parse_rating(result['course'].get('rating', '0')) >= min_rating) and
+               (search_tool.parse_duration(result['course'].get('estimated_time', '0')) <= max_duration) and
                (not topics or any(topic.lower() in result['course'].get('title', '').lower() for topic in topics))
         ]
         
