@@ -1,6 +1,6 @@
 # Course Compass
 
-Course Compass is a smart search tool for online courses, featuring web scraping capabilities, a semantic search implementation, and an interactive Streamlit web application.
+Course Compass is a smart search tool for online courses from Analytics Vidhya, featuring web scraping capabilities, a semantic search implementation, and an interactive Streamlit web application.
 
 ## Table of Contents
 
@@ -8,18 +8,16 @@ Course Compass is a smart search tool for online courses, featuring web scraping
 2. [Features](#features)
 3. [Installation](#installation)
 4. [Usage](#usage)
-   - [Web Scraping](#web-scraping)
-   - [Search Tool](#search-tool)
-   - [Streamlit App](#streamlit-app)
 5. [Project Structure](#project-structure)
-6. [Technologies Used](#technologies-used)
-7. [Future Improvements](#future-improvements)
-8. [Contributing](#contributing)
-9. [License](#license)
+6. [Development](#development)
+7. [Technologies Used](#technologies-used)
+8. [Future Improvements](#future-improvements)
+9. [Contributing](#contributing)
+10. [License](#license)
 
 ## Project Overview
 
-Course Compass aims to create a user-friendly search interface for online courses. It consists of three main components:
+Course Compass aims to create a user-friendly search interface for Analytics Vidhya's online courses. It consists of three main components:
 
 1. Web scraping scripts to collect course data
 2. A smart search tool using sentence transformers for semantic similarity
@@ -27,13 +25,13 @@ Course Compass aims to create a user-friendly search interface for online course
 
 ## Features
 
-- Web scraping of online courses
+- Web scraping of online courses from Analytics Vidhya
 - Smart search functionality using sentence transformers
 - Interactive web interface with Streamlit
-- Course filtering by difficulty and price (free/paid)
-- Sorting options for search results
+- Course filtering by difficulty, price, rating, and duration
+- Autocomplete suggestions for search queries
 - Pagination of search results
-- Data visualization of top search results
+- Data visualization of search results
 
 ## Installation
 
@@ -54,62 +52,85 @@ Course Compass aims to create a user-friendly search interface for online course
    pip install -r requirements.txt
    ```
 
+4. Install the project in editable mode:
+   ```
+   pip install -e .
+   ```
+
 ## Usage
 
-### Web Scraping
+The project includes a Makefile for common operations. Here are the available commands:
 
-To scrape the initial course data:
+- Scrape course data:
+  ```
+  make scrape
+  ```
 
-```
-python scrape_av_courses.py
-```
+- Run the Streamlit app:
+  ```
+  make run_app
+  ```
 
-This will create or update the `av_courses.json` file with basic course information.
+- Run tests:
+  ```
+  make test
+  ```
 
-To scrape detailed course information:
-
-```
-python scrape_av_courses_detailed.py
-```
-
-This will create or update the `av_courses_detailed.json` file with comprehensive course details.
-
-### Search Tool
-
-The search tool is implemented in `search_tool.py`. You can use it directly in Python:
-
-```python
-from search_tool import SmartSearchTool
-
-search_tool = SmartSearchTool('av_courses_detailed.json')
-results = search_tool.search("machine learning for beginners")
-
-for result in results:
-    print(f"Score: {result['score']:.4f}")
-    print(f"Title: {result['course']['title']}")
-    print(f"URL: {result['course']['url']}")
-    print("---")
-```
-
-### Streamlit App
-
-To run the Streamlit app:
-
-```
-streamlit run app.py
-```
-
-This will start the web application. Open your browser and navigate to the URL provided in the terminal (usually `http://localhost:8501`).
+- Clean up generated files:
+  ```
+  make clean
+  ```
 
 ## Project Structure
 
-- `scrape_av_courses.py`: Script for initial course data scraping
-- `scrape_av_courses_detailed.py`: Script for detailed course information scraping
-- `search_tool.py`: Implementation of the smart search tool
-- `app.py`: Streamlit web application
-- `requirements.txt`: List of Python dependencies
-- `av_courses.json`: Initial scraped course data
-- `av_courses_detailed.json`: Detailed scraped course data
+```
+Course_Compass_AV/
+├── data/
+│   ├── av_courses.json
+│   └── av_courses_detailed.json
+├── src/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   └── main.py
+│   ├── scraping/
+│   │   ├── __init__.py
+│   │   └── scraper.py
+│   └── search/
+│       ├── __init__.py
+│       └── search_tool.py
+├── tests/
+│   ├── test_scraping.py
+│   └── test_search.py
+├── .gitignore
+├── Makefile
+├── README.md
+├── requirements.txt
+└── setup.py
+```
+
+## Development
+
+To set up the development environment:
+
+1. Install the project in editable mode:
+   ```
+   pip install -e .
+   ```
+
+2. Run tests:
+   ```
+   make test
+   ```
+
+3. To scrape fresh data:
+   ```
+   make scrape
+   ```
+
+4. To run the Streamlit app locally:
+   ```
+   make run_app
+   ```
 
 ## Technologies Used
 
@@ -117,12 +138,12 @@ This will start the web application. Open your browser and navigate to the URL p
 - BeautifulSoup4 for web scraping
 - Sentence Transformers for semantic search
 - Streamlit for the web application
-- Pandas and Altair for data manipulation and visualization
+- Scikit-learn for TF-IDF vectorization and K-means clustering
 
 ## Future Improvements
 
 - Implement caching for search results to improve performance
-- Add more advanced filtering options (e.g., by estimated time or rating range)
+- Add more advanced filtering options
 - Implement a user feedback mechanism for search results
 - Add a feature to compare selected courses side-by-side
 - Regularly update the course data through automated scraping
