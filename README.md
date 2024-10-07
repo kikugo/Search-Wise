@@ -1,6 +1,6 @@
-# Analytics Vidhya Course Search
+# Course Compass
 
-This project provides a smart search tool for Analytics Vidhya courses, including web scraping scripts to gather course data, a search implementation using sentence transformers, and a Streamlit web application for an interactive user interface.
+Course Compass is a smart search tool for online courses, featuring web scraping capabilities, a semantic search implementation, and an interactive Streamlit web application.
 
 ## Table of Contents
 
@@ -19,15 +19,15 @@ This project provides a smart search tool for Analytics Vidhya courses, includin
 
 ## Project Overview
 
-This project aims to create a user-friendly search interface for Analytics Vidhya courses. It consists of three main components:
+Course Compass aims to create a user-friendly search interface for online courses. It consists of three main components:
 
-1. Web scraping scripts to collect course data from the Analytics Vidhya website
+1. Web scraping scripts to collect course data
 2. A smart search tool using sentence transformers for semantic similarity
 3. A Streamlit web application for users to search and filter courses
 
 ## Features
 
-- Web scraping of Analytics Vidhya courses
+- Web scraping of online courses
 - Smart search functionality using sentence transformers
 - Interactive web interface with Streamlit
 - Course filtering by difficulty and price (free/paid)
@@ -39,8 +39,8 @@ This project aims to create a user-friendly search interface for Analytics Vidhy
 
 1. Clone the repository:
    ```
-   git clone https://github.com/kikugo/scraping-proj.git
-   cd scraping-proj
+   git clone https://github.com/kikugo/Course_Compass_AV.git
+   cd Course_Compass_AV
    ```
 
 2. Create a virtual environment (optional but recommended):
@@ -64,7 +64,7 @@ To scrape the initial course data:
 python scrape_av_courses.py
 ```
 
-This will create an `av_courses.json` file with basic course information.
+This will create or update the `av_courses.json` file with basic course information.
 
 To scrape detailed course information:
 
@@ -72,7 +72,7 @@ To scrape detailed course information:
 python scrape_av_courses_detailed.py
 ```
 
-This will create an `av_courses_detailed.json` file with comprehensive course details.
+This will create or update the `av_courses_detailed.json` file with comprehensive course details.
 
 ### Search Tool
 
