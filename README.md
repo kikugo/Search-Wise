@@ -1,5 +1,5 @@
 ---
-title: Course Search AV
+title: Search-Wise
 emoji: 🔍
 colorFrom: blue
 colorTo: green
@@ -9,9 +9,9 @@ app_file: app.py
 pinned: false
 ---
 
-# Course Compass
+# Search-Wise
 
-Course Compass is a smart search tool for online courses from Analytics Vidhya, featuring web scraping capabilities, a semantic search implementation, and an interactive Streamlit web application.
+Search-Wise is a smart search tool for online courses from Analytics Vidhya, featuring web scraping capabilities, a semantic search implementation, and an interactive Streamlit web application.
 
 ## Table of Contents
 
@@ -28,7 +28,7 @@ Course Compass is a smart search tool for online courses from Analytics Vidhya, 
 
 ## Project Overview
 
-Course Compass aims to create a user-friendly search interface for Analytics Vidhya's online courses. It consists of three main components:
+Search-Wise aims to create a user-friendly search interface for Analytics Vidhya's online courses. It consists of three main components:
 
 1. Web scraping scripts to collect course data
 2. A smart search tool using sentence transformers for semantic similarity
@@ -48,8 +48,8 @@ Course Compass aims to create a user-friendly search interface for Analytics Vid
 
 1. Clone the repository:
    ```
-   git clone https://github.com/kikugo/Course_Compass_AV.git
-   cd Course_Compass_AV
+   git clone https://github.com/kikugo/Search-Wise.git
+   cd Search-Wise
    ```
 
 2. Create a virtual environment (optional but recommended):
@@ -95,7 +95,7 @@ The project includes a Makefile for common operations. Here are the available co
 ## Project Structure
 
 ```
-Course_Compass_AV/
+Search-Wise/
 ├── data/
 │   ├── av_courses.json
 │   └── av_courses_detailed.json
